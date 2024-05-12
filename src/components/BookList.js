@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
-import './BookList.css'; // Import CSS file for component styling
+import { useParams, useNavigate } from 'react-router-dom'; // Changed import statement
+import '../styles/booklist.css'; // Import CSS file for component styling
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate(); // Changed from useHistory
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -23,10 +24,18 @@ const BookList = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:8000/api/books/${id}`);
-      setBooks(books.filter(book => book.id !== id));
+      setBooks(books.filter((book) => book.id !== id));
     } catch (error) {
       console.error('Error deleting book:', error);
     }
+  };
+
+  const handleEdit = (id) => {
+    navigate(`/bookstore/edit/${id}`); // Changed from history.push
+  };
+
+  const handleDetails = (id) => {
+    navigate(`/bookstore/detail/${id}`); // Changed from history.push
   };
 
   return (
@@ -37,13 +46,24 @@ const BookList = () => {
           <li key={book.id} className="book-item">
             <div>
               <h2>{book.name}</h2>
-              <p><strong>Author:</strong> {book.author}</p>
-              <p><strong>Published on:</strong> {book.publish_date}</p>
+              <img src={require('../assets/images.png')}  alt="Book Cover" />
+              <p>
+              by <strong>{book.author}</strong> 
+              </p>
+              <p>
+                <strong>Published on:</strong> {book.publish_date}
+              </p>
             </div>
             <div className="book-actions">
-              <Link to={`/bookstore/edit/${book.id}`} className="action-link">Edit</Link>
-              <button onClick={() => handleDelete(book.id)} className="action-button">Delete</button>
-              <Link to={`/bookstore/detail/${book.id}`} className="action-link">Details</Link>
+              <button onClick={() => handleEdit(book.id)} className="action-button">
+                Edit
+              </button>
+              <button onClick={() => handleDelete(book.id)} className="action-button">
+                Delete
+              </button>
+              <button onClick={() => handleDetails(book.id)} className="action-button">
+                Details
+              </button>
             </div>
           </li>
         ))}

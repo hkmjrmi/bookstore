@@ -1,0 +1,44 @@
+/* header.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+.header-left {
+  margin-right: auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Displaying the links horizontally */
+}
+
+.nav-item {
+  margin-right: 1rem; /* Add some space between links */
+}
+
+.nav-item:last-child {
+  margin-right: 0; /* Remove margin for the last item */
+}
+
+.nav-item a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.nav-item a:hover {
+  color: #ccc;
+}

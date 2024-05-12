@@ -1,0 +1,59 @@
+.book-list-container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center; /* Center all content */
+}
+
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style-type: none; /* Remove bullets from the unordered list */
+  padding: 0; /* Remove default padding */
+}
+
+.book-item {
+  width: 30%; /* Three items per row with some space between */
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-item img {
+  max-width: 100px; /* Adjust the maximum width as needed */
+  max-height: 150px; /* Adjust the maximum height as needed */
+}
+
+.book-details {
+  margin-bottom: 10px;
+}
+
+.book-details h2 {
+  margin-bottom: 5px;
+}
+
+.book-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.action-button {
+  margin-right: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* Blue color */
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: inherit; /* Ensures font size matches surrounding text */
+  width: 100px; /* Fixed width for all buttons */
+  height: 40px; /* Fixed height for all buttons */
+}
+
+.action-button:last-child {
+  margin-right: 0;
+}
